@@ -23,8 +23,28 @@ const addItem = (req, reply) => {
     reply.code(201).send(item)
 }
 
+const deleteItem = (req, reply) => {
+    const { id } = req.params
+
+    items = items.filter(item => item.id !== id)
+
+    reply.send({message: `Item ${id} has been removed`})
+}
+
+const updateItem = (req, reply) => {
+    const { id } = req.params
+    const { name } = req.body
+
+    items = items.map(item => (item.id === id ? {id, name} : item))
+    item = items.find(item => item.id === id )
+
+    reply.send({message: 'Item has been updated', item})
+}
+
 module.exports = {
     getItems,
     getItem,
-    addItem
+    addItem,
+    deleteItem,
+    updateItem
 }
