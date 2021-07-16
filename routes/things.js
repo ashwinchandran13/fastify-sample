@@ -89,7 +89,7 @@ const updateItemOpts = {
 }
 
 function itemRoutes (fastify, options, done) { // index
-    fastify.get('/api/doc', 
+    fastify.get('/api/docs', 
     (req, rep) => {
         // console.log(req);
         
@@ -97,19 +97,19 @@ function itemRoutes (fastify, options, done) { // index
     })
 
     // Get all items
-    fastify.get('/items', getItemsOpts)
+    fastify.get('/things', getItemsOpts)
     
     // Get single items
-    fastify.get('/items/:id', getItemOpts)
+    fastify.get('/things/:id', getItemOpts)
 
     // Add item
-    fastify.post('/items', postItemOpts)
+    fastify.post('/things', postItemOpts)
 
     // Delete item
-    fastify.delete('/items/:id', deleteItemOpts)
+    fastify.delete('/things/:id', deleteItemOpts)
 
     // Update item
-    fastify.put('/items/:id', updateItemOpts)
+    fastify.put('/things/:id', updateItemOpts)
 
     done()
 }
